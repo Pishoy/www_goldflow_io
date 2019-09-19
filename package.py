@@ -41,9 +41,7 @@ class Package(j.baseclasses.threebot_package):
         called when the 3bot starts
         :return:
         """
-        server = j.servers.openresty.get("websites")
-        server.start()
-
+        self.prepare()
     def stop(self):
         """
         called when the 3bot stops
