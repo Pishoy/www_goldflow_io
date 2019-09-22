@@ -15,24 +15,23 @@ class Package(j.baseclasses.threebot_package):
         called when the 3bot starts
         :return:
         """
-
-        server = j.servers.openresty.get("websites")
-        server.install(reset=False)
+        server = self.openresty
+        server.install(reset=True)
         server.configure()
         website = server.websites.get("goldflow_io")
         website.ssl = False
         website.port = 80
         locations = website.locations.get("goldflow_io")
-
-        website_location = locations.locations_static.new()
-        website_location.name = "goldflow_io"
-        website_location.path_url = "/"
-        website_location.use_jumpscale_weblibs = True
-
+        static_location = locations.locations_static.new()
+        static_location.name = "static"
+        static_location.path_url = "/"
+        static_location.path_location = 
         path = j.clients.git.getContentPathFromURLorPath(self.goldflow_io_repo, branch=self.branch, pull=True)
         j.sal.fs.chown(path, "www", "www")
         print (" this is the path {} ..............".format(path))
-        website_location.path_location = path
+        static_location.path_location = fpath
+        static_location.use_jumpscale_weblibs = True
+        website.path = path
         locations.configure()
         website.configure()
 
