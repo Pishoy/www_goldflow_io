@@ -29,7 +29,7 @@ class Package(j.baseclasses.threebot_package):
         path = j.clients.git.getContentPathFromURLorPath(self.goldflow_io_repo, branch=self.branch, pull=True)
         j.sal.fs.chown(path, "www", "www")
         print (" this is the path {} ..............".format(path))
-        static_location.path_location = fpath
+        static_location.path_location = path
         static_location.use_jumpscale_weblibs = True
         website.path = path
         locations.configure()
