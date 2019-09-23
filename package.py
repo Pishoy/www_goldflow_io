@@ -25,7 +25,6 @@ class Package(j.baseclasses.threebot_package):
         static_location = locations.locations_static.new()
         static_location.name = "static"
         static_location.path_url = "/"
-        static_location.path_location = 
         path = j.clients.git.getContentPathFromURLorPath(self.goldflow_io_repo, branch=self.branch, pull=True)
         j.sal.fs.chown(path, "www", "www")
         print (" this is the path {} ..............".format(path))
