@@ -8,7 +8,7 @@ class Package(j.baseclasses.threebot_package):
         else:
             self.branch = "master"
 
-        self.goldflow_io_repo = "https://github.com/pishoy/www_goldflow_io"
+        self.goldflow_io_repo = "https://github.com/pishoy/www_goldflow_io.git"
 
     def prepare(self):
         """
